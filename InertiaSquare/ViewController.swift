@@ -62,7 +62,7 @@ private extension ViewController {
         
         let location = sender.location(in: view)
         snap = UISnapBehavior(item: squareView, snapTo: location)
-        snap?.damping = 1
+        snap?.damping = 1.2
         
         guard let snap else { return  }
         dynamicAnimator.addBehavior(snap)
@@ -72,7 +72,9 @@ private extension ViewController {
         dynamicAnimator.addBehavior(collision)
         
         let itemBehavior = UIDynamicItemBehavior(items: [squareView])
-        itemBehavior.elasticity = 1
+        itemBehavior.elasticity = 0.9
+        itemBehavior.friction = 0.1
+        itemBehavior.resistance = 0.1
         dynamicAnimator.addBehavior(itemBehavior)
     }
 }
